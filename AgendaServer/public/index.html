@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app='AgendaApp'>
+  <head>
+    <meta charset="utf-8">
+    <title>Agenda</title>
+    <link rel="stylesheet" href="stylesheets/styles.css" media="screen" charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js" type="text/javascript"></script>
+    <script src="javascripts/controller.js" charset="utf-8"></script>
+  </head>
+  <body ng-controller='AgendaController'>
+    <h1>Agenda</h1>
+    <div class="wrapper">
+      <div class="contact-item" ng-repeat='persona in personas | orderBy: "nombre"'>
+        <div class="persona">
+          {{persona.nombre}} - <span class="telf">{{persona.telf}}</span>
+        </div>
+      </div>
+    </div>
+    <br>
+    <center><button ng-click="showForm()" ng-hide="formVisibility">Añadir contacto</button></center>
+    <div ng-show="formVisibility" class="wrapper">
+      <h2>Añadir un contacto</h2>
+      <label for="nuevoNombre">Nombre:</label>
+      <input type="text" id="nuevoNombre" ng-model="nuevoContacto.nombre" placeholder="Nuevo nombre...">
+      <label for="nuevoTelf">Teléfono:</label>
+      <input type="text" id="nuevoTelf" ng-model="nuevoContacto.telf" placeholder="Nuevo teléfono...">
+      <button ng-click="save()">Guardar</button>
+    </div>
+  </body>
+</html>
